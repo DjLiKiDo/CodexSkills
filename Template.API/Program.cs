@@ -1,3 +1,6 @@
+using Template.Application.Abstractions;
+using Template.Infrastructure.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,7 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // register infrastructure services
-builder.Services.AddScoped<Template.Application.Abstractions.IWeatherForecastService, Template.Infrastructure.Services.RandomWeatherForecastService>();
+builder.Services.AddScoped<IWeatherForecastService, RandomWeatherForecastService>();
 
 var app = builder.Build();
 
