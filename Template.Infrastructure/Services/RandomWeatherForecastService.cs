@@ -12,6 +12,11 @@ public class RandomWeatherForecastService : IWeatherForecastService
 
     public IEnumerable<WeatherForecast> GetForecast(int days)
     {
+        if (days <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(days), "Days must be greater than zero.");
+        }
+
         return Enumerable.Range(1, days).Select(index =>
             new WeatherForecast(
                 DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
